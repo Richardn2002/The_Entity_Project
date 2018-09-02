@@ -1,0 +1,210 @@
+version: 1
+
+model:
+  sensor:
+    encoders:
+      sine1: 
+        fieldname: "sine1"
+        type: "ScalarEncoder"
+        n: 0
+        radius: 0 
+        # 0 means "not set" (but can be calculated using res,w,min&max)
+        resolution: 0.01
+        w: 21
+        minval: 0
+        maxval: 1
+        clipInput: False
+        periodic: False
+        forced: False
+        name: "Encoder for encoding OpenAI Gym's Acrobot-v1's input's first sine value" 
+      sine2:
+        fieldname: "sine2"
+        type: "ScalarEncoder"
+        n: 0
+        radius: 0 
+        # 0 means "not set" (but can be calculated using res,w,min&max)
+        resolution: 0.01
+        w: 21
+        minval: 0
+        maxval: 1
+        clipInput: False
+        periodic: False
+        forced: False
+        name: "Encoder for encoding OpenAI Gym's Acrobot-v1's input's second sine value"
+      angularSpeed1:
+        fieldname: "angularSpeed1"
+        resolution: 0.01
+        seed: 42
+        type: RandomDistributedScalarEncoder
+        name: "Encoder for encoding OpenAI Gym's Acrobot-v1's input's first angular speed value"
+      angularSpeed2:
+        fieldname: "angularSpeed1"
+        resolution: 0.01
+        seed: 42
+        type: RandomDistributedScalarEncoder
+        name: "Encoder for encoding OpenAI Gym's Acrobot-v1's input's second angular speed value"  
+      efferenceCopy:
+        fieldname: "efferenceCopy"
+        w: 21
+        categoryList: ["0","1","2"]
+        type: CategoryEncoder
+        name: "Encoder for the efference copies of the agent's actions"
+  connectors:
+    toL4I: #Input to L4 first step.Fxxk the thalumus
+      inputDimensions: 1126
+      columnCount: 2048
+      potentialRadius: 16
+      potentialPct: 0.5
+      globalInhibition: False
+      localAreaDensity: -1.0
+      numActiveColumnsPerInhArea: 10.0
+      stimulusThreshold: 0
+      synPermInactiveDec: 0.01
+      synPermActiveInc: 0.05
+      synPermConnected: 0.10
+      minPctOverlapDutyCycle: 0.01
+      dutyCyclePeriod: 500
+      boostStrength: 1.0
+      seed: 42
+      spVerbosity: 0
+      wrapAround:
+    toL4II: #For combining input D1's disinhibition and D2's inhibition
+      inputDimensions: 6144
+      columnCount: 2048
+      potentialRadius: 1
+      potentialPct: 1.0
+      globalInhibition: False
+      localAreaDensity: 1.0
+      numActiveColumnsPerInhArea: -1.0
+      stimulusThreshold: 0
+      synPermInactiveDec: 0.01
+      synPermActiveInc: 0.05
+      synPermConnected: 0.10
+      minPctOverlapDutyCycle: 0.01
+      dutyCyclePeriod: 500
+      boostStrength: 1.0
+      seed: 42
+      spVerbosity: 0
+      wrapAround:
+    toL5: #from L4
+      inputDimensions: 2048
+      columnCount: 2048
+      potentialRadius: 16
+      potentialPct: 0.5
+      globalInhibition: False
+      localAreaDensity: -1.0
+      numActiveColumnsPerInhArea: 10.0
+      stimulusThreshold: 0
+      synPermInactiveDec: 0.01
+      synPermActiveInc: 0.05
+      synPermConnected: 0.10
+      minPctOverlapDutyCycle: 0.01
+      dutyCyclePeriod: 500
+      boostStrength: 1.0
+      seed: 42
+      spVerbosity: 0
+      wrapAround:
+    toD1: #from L5
+      inputDimensions: 2048
+      columnCount: 2048
+      potentialRadius: 16
+      potentialPct: 0.5
+      globalInhibition: False
+      localAreaDensity: -1.0
+      numActiveColumnsPerInhArea: 10.0
+      stimulusThreshold: 0
+      synPermInactiveDec: 0.01
+      synPermActiveInc: 0.05
+      synPermConnected: 0.10
+      minPctOverlapDutyCycle: 0.01
+      dutyCyclePeriod: 500
+      boostStrength: 1.0
+      seed: 42
+      spVerbosity: 0
+      wrapAround:
+    toD2: #from L5
+      inputDimensions: 2048
+      columnCount: 2048
+      potentialRadius: 16
+      potentialPct: 0.5
+      globalInhibition: False
+      localAreaDensity: -1.0
+      numActiveColumnsPerInhArea: 10.0
+      stimulusThreshold: 0
+      synPermInactiveDec: 0.01
+      synPermActiveInc: 0.05
+      synPermConnected: 0.10
+      minPctOverlapDutyCycle: 0.01
+      dutyCyclePeriod: 500
+      boostStrength: 1.0
+      seed: 42
+      spVerbosity: 0
+      wrapAround:
+    output: #just handcraft one later...
+  processors:
+    cortex:
+      L2:
+
+      L3:
+
+      L4:
+        columnDimensions: 2048
+        cellsPerColumn:
+        activationThreshold:
+        initialPermanence: 
+        connectedPermanence: 
+        minThreshold: 
+        maxNewSynapseCount: 
+        permanenceIncrement:
+        permanenceDecrement:
+        predictedSegmentDecrement:
+        seed:
+        maxSegmentsPerCell:
+        maxSynapsesPerSegment:
+      L5:
+        columnDimensions: 2048
+        cellsPerColumn:
+        activationThreshold:
+        initialPermanence:
+        connectedPermanence:
+        minThreshold:
+        maxNewSynapseCount:
+        permanenceIncrement:
+        permanenceDecrement:
+        predictedSegmentDecrement:
+        seed:
+        maxSegmentsPerCell:
+        maxSynapsesPerSegment:
+      L6:
+
+    striatum:
+      D1:
+        columnDimensions: 2048
+        cellsPerColumn:
+        activationThreshold:
+        initialPermanence: 
+        connectedPermanence: 
+        minThreshold: 
+        maxNewSynapseCount: 
+        permanenceIncrement:
+        permanenceDecrement:
+        predictedSegmentDecrement:
+        seed:
+        maxSegmentsPerCell:
+        maxSynapsesPerSegment:
+      D2:
+        columnDimensions: 2048
+        cellsPerColumn:
+        activationThreshold:
+        initialPermanence: 
+        connectedPermanence: 
+        minThreshold: 
+        maxNewSynapseCount: 
+        permanenceIncrement:
+        permanenceDecrement:
+        predictedSegmentDecrement:
+        seed:
+        maxSegmentsPerCell:
+        maxSynapsesPerSegment:
+    thalamus: #I wonder if the thalamus IS the input pooler...
+
