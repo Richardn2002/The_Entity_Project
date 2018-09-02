@@ -1,4 +1,4 @@
-version: 1
+version: 0
 
 model:
   sensor:
@@ -49,10 +49,10 @@ model:
         categoryList: ["0","1","2"]
         type: CategoryEncoder
         name: "Encoder for the efference copies of the agent's actions"
+  columnCount: 2048
   connectors:
     toL4I: #Input to L4 first step.Fxxk the thalumus
       inputDimensions: 1126
-      columnCount: 2048
       potentialRadius: 16
       potentialPct: 0.5
       globalInhibition: False
@@ -69,8 +69,6 @@ model:
       spVerbosity: 0
       wrapAround:
     toL4II: #For combining input D1's disinhibition and D2's inhibition
-      inputDimensions: 6144
-      columnCount: 2048
       potentialRadius: 1
       potentialPct: 1.0
       globalInhibition: False
@@ -87,8 +85,6 @@ model:
       spVerbosity: 0
       wrapAround:
     toL5: #from L4
-      inputDimensions: 2048
-      columnCount: 2048
       potentialRadius: 16
       potentialPct: 0.5
       globalInhibition: False
@@ -105,8 +101,6 @@ model:
       spVerbosity: 0
       wrapAround:
     toD1: #from L5
-      inputDimensions: 2048
-      columnCount: 2048
       potentialRadius: 16
       potentialPct: 0.5
       globalInhibition: False
@@ -123,8 +117,6 @@ model:
       spVerbosity: 0
       wrapAround:
     toD2: #from L5
-      inputDimensions: 2048
-      columnCount: 2048
       potentialRadius: 16
       potentialPct: 0.5
       globalInhibition: False
@@ -144,11 +136,32 @@ model:
   processors:
     cortex:
       L2:
-
+        cellsPerColumn:
+        activationThreshold:
+        initialPermanence: 
+        connectedPermanence: 
+        minThreshold: 
+        maxNewSynapseCount: 
+        permanenceIncrement:
+        permanenceDecrement:
+        predictedSegmentDecrement:
+        seed:
+        maxSegmentsPerCell:
+        maxSynapsesPerSegment:
       L3:
-
+        cellsPerColumn:
+        activationThreshold:
+        initialPermanence: 
+        connectedPermanence: 
+        minThreshold: 
+        maxNewSynapseCount: 
+        permanenceIncrement:
+        permanenceDecrement:
+        predictedSegmentDecrement:
+        seed:
+        maxSegmentsPerCell:
+        maxSynapsesPerSegment:
       L4:
-        columnDimensions: 2048
         cellsPerColumn:
         activationThreshold:
         initialPermanence: 
@@ -162,7 +175,6 @@ model:
         maxSegmentsPerCell:
         maxSynapsesPerSegment:
       L5:
-        columnDimensions: 2048
         cellsPerColumn:
         activationThreshold:
         initialPermanence:
@@ -176,10 +188,21 @@ model:
         maxSegmentsPerCell:
         maxSynapsesPerSegment:
       L6:
-
+        cellsPerColumn:
+        activationThreshold:
+        initialPermanence: 
+        connectedPermanence: 
+        minThreshold: 
+        maxNewSynapseCount: 
+        permanenceIncrement:
+        permanenceDecrement:
+        predictedSegmentDecrement:
+        seed:
+        maxSegmentsPerCell:
+        maxSynapsesPerSegment:
     striatum:
+      k: 2 #rewarding and punishing coefficient
       D1:
-        columnDimensions: 2048
         cellsPerColumn:
         activationThreshold:
         initialPermanence: 
@@ -193,7 +216,6 @@ model:
         maxSegmentsPerCell:
         maxSynapsesPerSegment:
       D2:
-        columnDimensions: 2048
         cellsPerColumn:
         activationThreshold:
         initialPermanence: 
@@ -206,5 +228,4 @@ model:
         seed:
         maxSegmentsPerCell:
         maxSynapsesPerSegment:
-    thalamus: #I wonder if the thalamus IS the input pooler...
 
