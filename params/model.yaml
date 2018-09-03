@@ -1,6 +1,7 @@
 version: 0
 
 model:
+  columnCount: 2048
   sensor:
     encoders:
       sine1: 
@@ -49,7 +50,6 @@ model:
         categoryList: ["0","1","2"]
         type: CategoryEncoder
         name: "Encoder for the efference copies of the agent's actions"
-  columnCount: 2048
   connectors:
     toL4I: #Input to L4 first step.Fxxk the thalumus
       inputDimensions: 1126
