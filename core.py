@@ -190,14 +190,14 @@ while True:
 
         L5Temp = numpy.zeros(2048,dtype = int)
         for column in L4activeColumnIndices:
-            L5Temp[L4activeColumnIndices] = 1
+            L5Temp[column] = 1
         toL5Connector.compute(L5Temp,True,L5ActiveColumns)
         L5.compute(L5ActiveColumns,learn = True)
         L5activeColumnIndices = numpy.nonzero(L5ActiveColumns)[0]
 
         DTemp = numpy.zeros(2048,dtype = int)
         for column in L5activeColumnIndices:
-            DTemp[L5activeColumnIndices] = 1
+            DTemp[column] = 1
         toD1Connector.compute(DTemp,True,D1ActiveColumns)
         toD2Connector.compute(DTemp,True,D2ActiveColumns)
 
