@@ -25,7 +25,7 @@ Motor output now is done by spatial pooling the whole L5. This is to be modified
 Maybe other cortex layers will be added soon.
 
 
-#This Branch
+# This Branch
 is for A LOT changes
 First trials of the master branch showed very negative results.I guess that something is missing for a HTM system to gain creativity.
 So learning to complete the task given by my agent alone is not possible.It can neither figure out patterns nor filter out the answer from random.
