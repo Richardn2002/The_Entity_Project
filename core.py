@@ -1,3 +1,5 @@
+import numpy
+
 class Entity():
     def __init__(self,columnCount,InputEncoderParams,toL4ConnectorParamsI,toL4ConnectorParamsII,toL5ConnectorParams,toD1ConnectorParams,toD2ConnectorParams,L4Params,L5Params,k,D1Params,D2Params):
         self.columnCount = columnCount
