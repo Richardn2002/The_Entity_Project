@@ -1,9 +1,6 @@
-import numpy
-
 class Entity():
     def __init__(self,columnCount,InputEncoderParams,toL4ConnectorParamsI,toL4ConnectorParamsII,toL5ConnectorParams,toD1ConnectorParams,toD2ConnectorParams,L4Params,L5Params,k,D1Params,D2Params):
         self.columnCount = columnCount
-        self.inputDimensions = inputDimensions
         self.toL4ConnectorParamsI = toL4ConnectorParamsI
         self.toL4ConnectorParamsII = toL4ConnectorParamsII
         self.toL5ConnectorParams = toL5ConnectorParams
@@ -280,6 +277,3 @@ class Entity():
             self.action = 0
 
         return self.action
-
-
-
